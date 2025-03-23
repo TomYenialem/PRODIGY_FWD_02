@@ -1,22 +1,23 @@
-import { BarChart2, DollarSign, Menu, Settings, ShoppingBag, ShoppingCart, TrendingUp, Users ,ChartBar} from "lucide-react";
+import { BarChart2, DollarSign, Menu,  ShoppingBag, ShoppingCart, TrendingUp, Users ,ChartBar} from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 
 const SIDEBAR_ITEMS = [
-	{
-		name: "Dashbord",
-		icon: BarChart2,
-		color: "#6366f1",
-		href: "/",
-	},
-	{ name: "Employees", icon: ShoppingBag, color: "#8B5CF6", href: "/products" },
-	{ name: "Patinet", icon: Users, color: "#EC4899", href: "/users" },
-	{ name: "Sales", icon: DollarSign, color: "#10B981", href: "/sales" },
-	{ name: "New Order", icon: FaCartPlus , color: "#6EE7B7", href: "/orders" },
-	{ name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "/orders" },
-	{ name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "/analytics" },
+  {
+    name: "Dashbord",
+    icon: BarChart2,
+    color: "#6366f1",
+    href: "/",
+  },
+  { name: "Employees", icon: ShoppingBag, color: "#8B5CF6", href: "/products" },
+  { name: "Patinet", icon: Users, color: "#EC4899", href: "/users" },
+  { name: "Sales", icon: DollarSign, color: "#10B981", href: "/sales" },
+  { name: "New Order", icon: FaCartPlus, color: "#6EE7B7", href: "/new_order" },
+  { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "/orders" },
+  { name: "Services", icon: TrendingUp, color: "#3B82F6", href: "/new_service" },
+  { name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "/analytics" },
 ];
 
 const Sidebar = () => {

@@ -11,6 +11,8 @@ import AnalyticsPage from "./Pages/AnalyticsPage";
 import AddUsers from "./Components/Users/AddUsers";
 import Employees from "./Components/Products/Employees";
 import EditEmployees from "./Components/Products/EditEmployees";
+import NewOrder from "./Components/NewOrder/NewOrder";
+import Services from "./Components/Servcies/Services";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/add_user" element={<AddUsers />} />
           <Route path="/add_employee" element={<Employees />} />
-          <Route path="/edit_employee" element={<EditEmployees />} />
+          <Route path="/new_order" element={<NewOrder />} />
+          <Route path="/new_service" element={<Services/>} />
         </Routes>
       </div>
     </>

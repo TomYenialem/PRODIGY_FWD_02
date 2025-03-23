@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 function Employees() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,11 @@ function Employees() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800 bg-opacity-50 backdrop-blur-md md:p-6">
+    <motion.div className="flex justify-center items-center min-h-screen bg-gray-800 bg-opacity-50 backdrop-blur-md md:p-6"
+    initial={{opacity: 0, y: 30}}
+    animate={{opacity: 1, y: 0}}
+    transition={{duration: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
+    >
       <div className="w-[300px] sm:w-[500px]  bg-gray-800 text-white border border-gray-700 rounded-lg p-6">
         <h1 className="text-xl font-semibold mb-6 text-start text-green-600">
           Add Employee
@@ -108,7 +113,7 @@ function Employees() {
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
