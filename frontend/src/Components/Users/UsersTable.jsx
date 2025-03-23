@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const userData = [
   {
@@ -62,8 +63,15 @@ const UsersTable = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-6 p-2">
+      <div className="flex justify-between">
         <h2 className="text-xl font-semibold text-gray-100 pb-2">Users</h2>
+        <Link to ='/add_user'>
+        <button className="bg-green-400 px-4 py-2 rounded hover:bg-green-700 mb-2">Add User</button>
+        
+        </Link>
+
+      </div>
+      <div className="flex justify-end mb-6 p-2">
         <div className="relative">
           <input
             type="text"

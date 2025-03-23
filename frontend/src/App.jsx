@@ -8,6 +8,9 @@ import UsersPage from "./Pages/UsersPage";
 import SalesPage from "./Pages/SalesPage";
 import OrdersPage from "./Pages/OrdersPage";
 import AnalyticsPage from "./Pages/AnalyticsPage";
+import AddUsers from "./Components/Users/AddUsers";
+import Employees from "./Components/Products/Employees";
+import EditEmployees from "./Components/Products/EditEmployees";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/add_user" element={<AddUsers />} />
+          <Route path="/add_employee" element={<Employees />} />
+          <Route path="/edit_employee" element={<EditEmployees />} />
         </Routes>
       </div>
     </>
