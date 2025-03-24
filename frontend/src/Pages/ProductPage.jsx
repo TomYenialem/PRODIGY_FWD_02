@@ -5,11 +5,11 @@ import Header from "../Components/Header/Header";
 
 import { AlertTriangle, DollarSign, Package, TrendingUp } from "lucide-react";
 
-import ProductChart from "../Components/Products/ProductChart";
-import ProductTable from "../Components/Products/ProductTable";
-import CategoryChart from "../Components/Products/CatagoryChart";
+import ProductChart from "../Components/Employees/EmployeeChart";
+import ProductTable from "../Components/Employees/EmployeeTable";
+import CategoryChart from "../Components/Employees/CatagoryChart";
 
-const ProductPage = () => {
+const EmployeePage = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="Products" />
@@ -59,4 +59,4 @@ const ProductPage = () => {
     </div>
   );
 };
-export default ProductPage;
+export default EmployeePage;

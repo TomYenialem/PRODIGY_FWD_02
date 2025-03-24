@@ -9,10 +9,11 @@ import SalesPage from "./Pages/SalesPage";
 import OrdersPage from "./Pages/OrdersPage";
 import AnalyticsPage from "./Pages/AnalyticsPage";
 import AddUsers from "./Components/Users/AddUsers";
-import Employees from "./Components/Products/Employees";
-import EditEmployees from "./Components/Products/EditEmployees";
+import Employees from "./Components/Employees/Employees";
+import EditEmployees from "./Components/Employees/EditEmployees";
 import NewOrder from "./Components/NewOrder/NewOrder";
 import Services from "./Components/Servcies/Services";
+import EmployeePage from "./Pages/ProductPage";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path="/" element={<Overview />} />
-          <Route path="/products" element={<ProductPage />} />
+          <Route path="/employee" element={<EmployeePage/>} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/orders" element={<OrdersPage />} />

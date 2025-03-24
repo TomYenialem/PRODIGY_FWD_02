@@ -11,12 +11,17 @@ const SIDEBAR_ITEMS = [
     color: "#6366f1",
     href: "/",
   },
-  { name: "Employees", icon: ShoppingBag, color: "#8B5CF6", href: "/products" },
+  { name: "Employees", icon: ShoppingBag, color: "#8B5CF6", href: "/employee" },
   { name: "Patinet", icon: Users, color: "#EC4899", href: "/users" },
   { name: "Sales", icon: DollarSign, color: "#10B981", href: "/sales" },
   { name: "New Order", icon: FaCartPlus, color: "#6EE7B7", href: "/new_order" },
   { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "/orders" },
-  { name: "Services", icon: TrendingUp, color: "#3B82F6", href: "/new_service" },
+  {
+    name: "Services",
+    icon: TrendingUp,
+    color: "#3B82F6",
+    href: "/new_service",
+  },
   { name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "/analytics" },
 ];
 
