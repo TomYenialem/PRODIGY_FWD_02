@@ -2,9 +2,9 @@ import { UserCheck, UserPlus, UsersIcon, UserX } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "../Components/Header/Header";
 import StatCard from "../Components/StatCard/StatCard";
-import UsersTable from "../Components/Users/UsersTable";
-import UserGrowth from "../Components/Users/UserGrowth";
-import UserActivity from "../Components/Users/UserActivity";
+import UserGrowth from "../Components/Patients/UserGrowth";
+import UserActivity from "../Components/Patients/UserActivity";
+import Patients  from '../Components/Patients/PatientTable'
 
 const userStats = {
   totalUsers: 152845,
@@ -52,7 +52,7 @@ const UsersPage = () => {
           />
         </motion.div>
 
-        <UsersTable />
+        <Patients />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
          <UserGrowth/>

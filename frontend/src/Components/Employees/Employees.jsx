@@ -22,6 +22,7 @@ function Employees() {
   const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
 
+
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,6 +73,8 @@ const handleSubmit = async (e) => {
     setLoading(false);
   }
 };
+
+
 
 
   return (
@@ -165,6 +168,7 @@ const handleSubmit = async (e) => {
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
+  
       </div>
     </motion.div>
   );

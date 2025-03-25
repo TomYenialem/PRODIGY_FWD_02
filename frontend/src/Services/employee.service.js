@@ -56,7 +56,7 @@ const getSingleEmployee = async (employee_id) => {
     },
   };
   const response = await fetch(
-    `${api_url}/api/employees/${employee_id}`,
+    `${api_url}/single_employee/${employee_id}`,
     options
   );
   return response.json();
@@ -71,7 +71,7 @@ const editEmployee = async (employee_id, data) => {
       body: JSON.stringify(data),
     };
     const response = await fetch(
-      `${api_url}/api/employees/${employee_id}`,
+      `${api_url}/edit_employee/${employee_id}`,
       options
     );
     return response.json();
@@ -87,7 +87,7 @@ const deleteEmploye = async (id) => {
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch(`${api_url}/api/employees/${id}`, options);
+    const response = await fetch(`${api_url}/delete_emloyee/${id}`, options);
     return response.json();
   } catch (error) {
     console.log(error);

@@ -2,18 +2,20 @@ import "./App.css";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Overview from "./Pages/OverView";
 
-import {Routes,Route} from 'react-router-dom'
-import ProductPage from "./Pages/ProductPage";
-import UsersPage from "./Pages/UsersPage";
+import { Routes, Route } from "react-router-dom";
+
 import SalesPage from "./Pages/SalesPage";
 import OrdersPage from "./Pages/OrdersPage";
 import AnalyticsPage from "./Pages/AnalyticsPage";
-import AddUsers from "./Components/Users/AddUsers";
+import AddPatients from "./Components/Patients/AddPatients";
 import Employees from "./Components/Employees/Employees";
 import EditEmployees from "./Components/Employees/EditEmployees";
 import NewOrder from "./Components/NewOrder/NewOrder";
 import Services from "./Components/Servcies/Services";
 import EmployeePage from "./Pages/ProductPage";
+import PatientsPage from "./Pages/PatientsPage";
+import { Toaster } from "react-hot-toast";
+import EditPatient from "./Components/Patients/EditPatient";
 
 function App() {
   return (
@@ -28,16 +30,22 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path="/" element={<Overview />} />
-          <Route path="/employee" element={<EmployeePage/>} />
-          <Route path="/users" element={<UsersPage />} />
+          <Route path="/employee" element={<EmployeePage />} />
+          <Route path="/users" element={<PatientsPage />} />
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
-          <Route path="/add_user" element={<AddUsers />} />
+          <Route path="/add_user" element={<AddPatients />} />
           <Route path="/add_employee" element={<Employees />} />
           <Route path="/new_order" element={<NewOrder />} />
-          <Route path="/new_service" element={<Services/>} />
+          <Route path="/new_service" element={<Services />} />
+          <Route
+            path="/edit_employee/:employee_id"
+            element={<EditEmployees />}
+          />
+          <Route path="/edit_customer/:customer_id" element={<EditPatient />} />
         </Routes>
+        <Toaster position="right-top" />
       </div>
     </>
   );
