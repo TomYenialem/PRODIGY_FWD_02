@@ -16,6 +16,7 @@ import EmployeePage from "./Pages/ProductPage";
 import PatientsPage from "./Pages/PatientsPage";
 import { Toaster } from "react-hot-toast";
 import EditPatient from "./Components/Patients/EditPatient";
+import PlaceOrder from "./Components/Orders/PlaceOrder";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/add_employee" element={<Employees />} />
           <Route path="/new_order" element={<NewOrder />} />
           <Route path="/new_service" element={<Services />} />
+          <Route path="/add_order/:customer_id" element={<PlaceOrder />} />
           <Route
             path="/edit_employee/:employee_id"
             element={<EditEmployees />}

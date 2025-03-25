@@ -4,7 +4,7 @@ import { Search, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import customers from "../../Services/AddPatient.service";
 import { parseISO,formatDistanceToNow } from "date-fns";
-import { Edit} from "lucide-react";
+import { Link as LucideLink,Edit } from "lucide-react";
 const UsersTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -172,10 +172,13 @@ const UsersTable = () => {
                           </Link>
                         </button>
                         <button className="text-red-400 hover:text-red-300">
-                          <Trash2
+                          <Link to={`/add_order/${user.customer_id}`}>
+                          <LucideLink
                             size={18}
-                            onClick={() => handleDeleteClick(user.customer_id)}
+                          
                           />
+                          
+                          </Link>
                         </button>
                       </td>
                     </motion.tr>
