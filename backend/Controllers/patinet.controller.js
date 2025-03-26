@@ -1,17 +1,15 @@
 // import customer service
-const customerService = require("../Services/employee.service");
+const customerService = require("../Services/patient.service");
 
 const addCustomer = async (req, res) => {
   try {
-    const checkEmail = await customerService.checkIfCustomerExists(
-      req.body.customer_email
-    );
+const checkEmail = await customerService.checkIfCustomerExists(req.body.customer_email);
 
     if (checkEmail) {
       return res.status(400).json({ error: "Email already exists" });
     } else {
       const customerData = req.body;
-      const newCustomer = await customerService.addCustomer(customerData);
+      const newCustomer = await customerService.addCustomers(customerData);
       if (!newCustomer) {
         return res
           .status(500)

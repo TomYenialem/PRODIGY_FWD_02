@@ -10,7 +10,7 @@ const checkIfCustomerExists = async (email) => {
   return false;
 };
 
-const addCustomer = async (customer) => {
+const addCustomers = async (customer) => {
   let returnDatas = {};
   try {
     const quary1 =
@@ -92,7 +92,7 @@ const editCustomer = async (customer_id, customer) => {
 
 module.exports = {
   checkIfCustomerExists,
-  addCustomer,
+  addCustomers,
   getAllCustomers,
   getSingleCustomer,
   editCustomer,
