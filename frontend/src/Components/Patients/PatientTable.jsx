@@ -43,9 +43,9 @@ const UsersTable = () => {
   return (
     <>
       {loading ? (
-        <p className="text-green-600 flex items-center justify-center h-96">
-          Loading...
-        </p>
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin w-10 h-10 text-blue-500 border-4 border-t-blue-500 rounded-full"></div>
+        </div>
       ) : (
         <>
           <motion.div
@@ -173,11 +173,7 @@ const UsersTable = () => {
                         </button>
                         <button className="text-red-400 hover:text-red-300">
                           <Link to={`/add_order/${user.customer_id}`}>
-                          <LucideLink
-                            size={18}
-                          
-                          />
-                          
+                            <LucideLink size={18} />
                           </Link>
                         </button>
                       </td>

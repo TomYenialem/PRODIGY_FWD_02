@@ -17,6 +17,8 @@ import PatientsPage from "./Pages/PatientsPage";
 import { Toaster } from "react-hot-toast";
 import EditPatient from "./Components/Patients/EditPatient";
 import PlaceOrder from "./Components/Orders/PlaceOrder";
+import CustomerOrder from "./Components/Patients/CustomerOrder";
+import EditOrders from "./Components/Orders/EditOrders";
 
 function App() {
   return (
@@ -41,11 +43,13 @@ function App() {
           <Route path="/new_order" element={<NewOrder />} />
           <Route path="/new_service" element={<Services />} />
           <Route path="/add_order/:customer_id" element={<PlaceOrder />} />
+          <Route path="/customer_order/:order_id" element={<CustomerOrder />} />
           <Route
             path="/edit_employee/:employee_id"
             element={<EditEmployees />}
           />
           <Route path="/edit_customer/:customer_id" element={<EditPatient />} />
+          <Route path="/edit_orders/:order_id" element={<EditOrders />} />
         </Routes>
         <Toaster position="right-top" />
       </div>

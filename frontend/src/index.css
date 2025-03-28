@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.order{
+
+
+    z-index: 1000 !important;
+    height: 1900px !important;
+    overflow-y :scroll !important;
+}

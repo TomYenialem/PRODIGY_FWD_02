@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customers from "../../Services/AddPatient.service";
-import {toast} from 'react-hot-toast'
+import { toast } from "react-hot-toast";
 
 function AddUsers() {
   const [formData, setFormData] = useState({

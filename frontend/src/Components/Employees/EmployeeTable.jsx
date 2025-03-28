@@ -71,8 +71,8 @@ const EmployeeTable = () => {
   return (
     <>
       {loading ? (
-        <div className="flex justify-center items-center h-96">
-          <h1>Loading....</h1>
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin w-10 h-10 text-blue-500 border-4 border-t-blue-500 rounded-full"></div>
         </div>
       ) : (
         <motion.div

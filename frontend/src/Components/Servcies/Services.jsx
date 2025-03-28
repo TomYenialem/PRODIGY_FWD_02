@@ -118,39 +118,42 @@ function Services() {
 "
       >
         <h1 className="text-green-600 mb-4 font-bold text-xl">Services</h1>
-        <div className="space-y-4">
-          {serviceDatas.map((service) => (
-            <div
-              key={service.service_id}
-              className="bg-gray-700 p-4 rounded-lg flex justify-between items-center"
-            >
-              <div>
-                <p className="text-white text-lg font-semibold">
-                  {service.service_name}
-                </p>
-                <p className="text-sm text-gray-300">
-                  {service.service_description}
-                </p>
-              </div>
-              <div className="flex space-x-3">
-                <button
-                  className="text-indigo-400 hover:text-indigo-300"
-                  onClick={() => editInputValues(service)}
-                >
-                  <Edit size={20} />
-                </button>
+        {loading ? (
+          <p className="flex justify-center"> Loading...</p>
+        ) : (
+          <div className="space-y-4">
+            {serviceDatas.map((service) => (
+              <div
+                key={service.service_id}
+                className="bg-gray-700 p-4 rounded-lg flex justify-between items-center"
+              >
+                <div>
+                  <p className="text-white text-lg font-semibold">
+                    {service.service_name}
+                  </p>
+                  <p className="text-sm text-gray-300">
+                    {service.service_description}
+                  </p>
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    className="text-indigo-400 hover:text-indigo-300"
+                    onClick={() => editInputValues(service)}
+                  >
+                    <Edit size={20} />
+                  </button>
 
-                <button className="text-red-400 hover:text-red-300">
-                  <Trash2 size={20} 
-                  
-                  onClick={() => handleToDelete(service.service_id)}
-                  
-                  />
-                </button>
+                  <button className="text-red-400 hover:text-red-300">
+                    <Trash2
+                      size={20}
+                      onClick={() => handleToDelete(service.service_id)}
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Add Service Section */}
@@ -222,9 +225,7 @@ function Services() {
               </button>
               <button
                 className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                onClick={
-                  checkToDelete
-                }
+                onClick={checkToDelete}
               >
                 Delete
               </button>
