@@ -11,13 +11,13 @@ import {
 import { useState } from "react";
 
 const monthlySalesData = [
-  { month: "Jan", sales: 4000 },
-  { month: "Feb", sales: 3000 },
-  { month: "Mar", sales: 5000 },
-  { month: "Apr", sales: 4500 },
-  { month: "May", sales: 6000 },
-  { month: "Jun", sales: 5500 },
-  { month: "Jul", sales: 7000 },
+  { month: "Jan", income: 4000 },
+  { month: "Feb", income: 3000 },
+  { month: "Mar", income: 5000 },
+  { month: "Apr", income: 4500 },
+  { month: "May", income: 6000 },
+  { month: "Jun", income: 5500 },
+  { month: "Jul", income: 7000 },
 ];
 
 const SalesOverView = () => {
@@ -31,7 +31,7 @@ const SalesOverView = () => {
       transition={{ delay: 0.2 }}
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-100">Sales Overview</h2>
+        <h2 className="text-xl font-semibold text-gray-100">Incomes Overview</h2>
 
         <select
           className="bg-gray-700 text-white rounded-md px-3 py-1 focus:outline-none focus:ring-2 
@@ -62,7 +62,7 @@ const SalesOverView = () => {
             />
             <Area
               type="monotone"
-              dataKey="sales"
+              dataKey="income"
               stroke="#8B5CF6"
               fill="#8B5CF6"
               fillOpacity={0.3}

@@ -9,22 +9,22 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 
-const salesData = [
-    { name: "Jul", sales: 2200 },
-    { name: "Aug", sales: 3800 },
-  { name: "Sep", sales: 5100 },
-  { name: "Oct", sales: 4600 },
-  { name: "Nov", sales: 5400 },
-  { name: "Dec", sales: 7200 },
-  { name: "Jan", sales: 6100 },
-  { name: "Feb", sales: 5900 },
-  { name: "Mar", sales: 6800 },
-  { name: "Apr", sales: 6300 },
-  { name: "May", sales: 7100 },
-  { name: "Jun", sales: 7500 },
+const patientAdmissionsData = [
+  { name: "Jul", patients: 120 },
+  { name: "Aug", patients: 200 },
+  { name: "Sep", patients: 320 },
+  { name: "Oct", patients: 280 },
+  { name: "Nov", patients: 350 },
+  { name: "Dec", patients: 450 },
+  { name: "Jan", patients: 390 },
+  { name: "Feb", patients: 370 },
+  { name: "Mar", patients: 420 },
+  { name: "Apr", patients: 400 },
+  { name: "May", patients: 460 },
+  { name: "Jun", patients: 500 },
 ];
 
-const SalesOverviewChart = () => {
+const PatientAdmissionsChart = () => {
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
@@ -32,15 +32,22 @@ const SalesOverviewChart = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <h2 className="text-lg font-medium mb-4 text-gray-100">Sales Overview</h2>
+      <h2 className="text-lg font-medium mb-4 text-gray-100">
+        Monthly Patient Admissions
+      </h2>
 
       <div className="h-80">
         <ResponsiveContainer width={"100%"} height={"100%"}>
-          <LineChart data={salesData}>
+          <LineChart data={patientAdmissionsData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#4B5563" />
             <XAxis dataKey={"name"} stroke="#9ca3af" />
-           <YAxis stroke="#9ca3af" domain={[0, Math.max(...salesData.map((d) => d.sales)) + 500]} />
-
+            <YAxis
+              stroke="#9ca3af"
+              domain={[
+                0,
+                Math.max(...patientAdmissionsData.map((d) => d.patients)) + 50,
+              ]}
+            />
 
             <Tooltip
               contentStyle={{
@@ -51,7 +58,7 @@ const SalesOverviewChart = () => {
             />
             <Line
               type="monotone"
-              dataKey="sales"
+              dataKey="patients"
               stroke="#6366F1"
               strokeWidth={4}
               dot={{ fill: "#10B981", strokeWidth: 2, r: 6 }}
@@ -63,4 +70,4 @@ const SalesOverviewChart = () => {
     </motion.div>
   );
 };
-export default SalesOverviewChart;
+export default PatientAdmissionsChart;

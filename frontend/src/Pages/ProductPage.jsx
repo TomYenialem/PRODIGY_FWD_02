@@ -4,6 +4,11 @@ import StatCard from "../Components/StatCard/StatCard";
 import Header from "../Components/Header/Header";
 
 import { AlertTriangle, DollarSign, Package, TrendingUp } from "lucide-react";
+import {
+  Stethoscope,
+  BriefcaseMedical,
+} from "lucide-react";
+
 
 import ProductChart from "../Components/Employees/EmployeeChart";
 import ProductTable from "../Components/Employees/EmployeeTable";
@@ -12,7 +17,7 @@ import CategoryChart from "../Components/Employees/CatagoryChart";
 const EmployeePage = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
-      <Header title="Products" />
+      <Header title="Employees" />
 
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
         {/* STATS */}
@@ -23,27 +28,27 @@ const EmployeePage = () => {
           transition={{ duration: 1 }}
         >
           <StatCard
-            name="Total Products"
+            name="Total Employees"
             icon={Package}
-            value={1234}
+            value={624}
             color="#6366F1"
           />
           <StatCard
-            name="Top Selling"
+            name="Top Employees"
             icon={TrendingUp}
             value={89}
             color="#10B981"
           />
           <StatCard
-            name="Low Stock"
-            icon={AlertTriangle}
+            name="Specialist Doctors"
+            icon={BriefcaseMedical}
             value={23}
             color="#F59E0B"
           />
           <StatCard
-            name="Total Revenue"
-            icon={DollarSign}
-            value={"$543,210"}
+            name="Staff"
+            icon={Stethoscope}
+            value={500}
             color="#EF4444"
           />
         </motion.div>
@@ -53,7 +58,7 @@ const EmployeePage = () => {
         {/* CHARTS */}
         <div className="grid grid-col-1 lg:grid-cols-2 gap-8">
           <ProductChart />
-          <CategoryChart/>
+          <CategoryChart />
         </div>
       </main>
     </div>

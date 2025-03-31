@@ -60,8 +60,8 @@ function PlaceOrder() {
             {singleCustomer.customer_email}
           </p>
           <p className="">
-            <span className=" text-green-400">Phone:</span>{" "}
-            {singleCustomer.customer_phone_number}
+            <span className=" text-green-400">Phone:</span> $
+            {singleCustomer.order_total_price}
           </p>
           <div className="flex items-center space-x-2">
             <span className=" text-green-400">Status:</span>
@@ -74,9 +74,7 @@ function PlaceOrder() {
                 Inactive
               </span>
             )}
-            <Link
-              to={`/edit_customer/${singleCustomer.customer_id}`}
-            >
+            <Link to={`/edit_customer/${singleCustomer.customer_id}`}>
               <span>
                 <Edit />
               </span>
@@ -119,13 +117,10 @@ function PlaceOrder() {
           </div>
         </div>
 
-       
-       <SendServices
-         customerId={singleCustomer.customer_id}
-
-         selectedServices={selectedServices}
-
-       />
+        <SendServices
+          customer_id={singleCustomer.customer_id}
+          selectedServices={selectedServices}
+        />
       </div>
     </div>
   );

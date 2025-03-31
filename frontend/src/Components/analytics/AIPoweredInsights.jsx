@@ -15,7 +15,7 @@ const INSIGHTS = [
 	{
 		icon: ShoppingBag,
 		color: "text-purple-500",
-		insight: 'Product category "Electronics" shows the highest growth potential based on recent market trends.',
+		insight: 'Patient category "females" shows the highest growth potential.',
 	},
 	{
 		icon: DollarSign,

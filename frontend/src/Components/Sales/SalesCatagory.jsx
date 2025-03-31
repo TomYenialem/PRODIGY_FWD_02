@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 const salesByCategory = [
-	{ name: "Electronics", value: 400 },
-	{ name: "Clothing", value: 300 },
-	{ name: "Home & Garden", value: 200 },
-	{ name: "Books", value: 100 },
+	{ name: "Babies", value: 400 },
+	{ name: "Preginats", value: 300 },
+	{ name: "Male", value: 200 },
+	{ name: "Females", value: 100 },
 	{ name: "Others", value: 150 },
 ];
 
@@ -18,7 +18,7 @@ const SalesCatagory = () => {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.3 }}
 		>
-			<h2 className='text-xl font-semibold text-gray-100 mb-4'>Sales by Category</h2>
+			<h2 className='text-xl font-semibold text-gray-100 mb-4'>Patients by Category</h2>
 
 			<div style={{ width: "100%", height: 300 }}>
 				<ResponsiveContainer>

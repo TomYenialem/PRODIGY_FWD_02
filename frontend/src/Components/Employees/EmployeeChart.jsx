@@ -10,16 +10,16 @@ import {
   Legend,
 } from "recharts";
 
-const salesData = [
-  { month: "Jan", sales: 4000 },
-  { month: "Feb", sales: 3000 },
-  { month: "Mar", sales: 5000 },
-  { month: "Apr", sales: 4500 },
-  { month: "May", sales: 6000 },
-  { month: "Jun", sales: 5500 },
+const patientData = [
+  { month: "Jan", admissions: 120 },
+  { month: "Feb", admissions: 150 },
+  { month: "Mar", admissions: 200 },
+  { month: "Apr", admissions: 180 },
+  { month: "May", admissions: 250 },
+  { month: "Jun", admissions: 230 },
 ];
 
-const EmployeeChart = () => {
+const PatientAdmissionsChart = () => {
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
@@ -27,10 +27,12 @@ const EmployeeChart = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
     >
-      <h2 className="text-xl font-semibold text-gray-100 mb-4">Sales Trend</h2>
+      <h2 className="text-xl font-semibold text-gray-100 mb-4">
+        Monthly Patient Admissions
+      </h2>
       <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
-          <LineChart data={salesData}>
+          <LineChart data={patientData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
             <XAxis dataKey="month" stroke="#9CA3AF" />
             <YAxis stroke="#9CA3AF" />
@@ -44,8 +46,8 @@ const EmployeeChart = () => {
             <Legend />
             <Line
               type="monotone"
-              dataKey="sales"
-              stroke="#8B5CF6"
+              dataKey="admissions"
+              stroke="#34D399"
               strokeWidth={2}
             />
           </LineChart>
@@ -54,4 +56,5 @@ const EmployeeChart = () => {
     </motion.div>
   );
 };
-export default EmployeeChart;
+
+export default PatientAdmissionsChart;

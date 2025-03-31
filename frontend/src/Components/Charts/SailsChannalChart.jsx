@@ -11,16 +11,16 @@ import {
   Cell,
 } from "recharts";
 
-const COLORS = [" #10B981", "#8B5CF6", "#EC4899", "", "#F59E0B"];
+const COLORS = ["#10B981", "#8B5CF6", "#EC4899", "#F59E0B"];
 
-const SALES_CHANNEL_DATA = [
-  { name: "Website", value: 5600 },
-  { name: "Mobile App", value: 3200 },
-  { name: "Marketplace", value: 2800 },
-  { name: "Social Media", value: 700 },
+const HOSPITAL_DEPARTMENT_DATA = [
+  { name: "Emergency", value: 150 },
+  { name: "Pediatrics", value: 80 },
+  { name: "Cardiology", value: 60 },
+  { name: "Orthopedics", value: 50 },
 ];
 
-const SailsChannalChart = () => {
+const PatientAdmissionsChart = () => {
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 lg:col-span-2 border border-gray-700"
@@ -29,12 +29,12 @@ const SailsChannalChart = () => {
       transition={{ delay: 0.4 }}
     >
       <h2 className="text-lg font-medium mb-4 text-gray-100">
-        Sales by Channel
+        Patient Admissions by Department
       </h2>
 
       <div className="h-80">
         <ResponsiveContainer>
-          <BarChart data={SALES_CHANNEL_DATA}>
+          <BarChart data={HOSPITAL_DEPARTMENT_DATA}>
             <CartesianGrid strokeDasharray="3 3" stroke="#4B5563" />
             <XAxis dataKey="name" stroke="#9CA3AF" />
             <YAxis stroke="#9CA3AF" />
@@ -47,7 +47,7 @@ const SailsChannalChart = () => {
             />
             <Legend />
             <Bar dataKey={"value"} fill="#8884d8">
-              {SALES_CHANNEL_DATA.map((entry, index) => (
+              {HOSPITAL_DEPARTMENT_DATA.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
@@ -60,4 +60,5 @@ const SailsChannalChart = () => {
     </motion.div>
   );
 };
-export default SailsChannalChart;
+
+export default PatientAdmissionsChart;

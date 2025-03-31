@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import orders from "../../Services/orders.service";
 
-function SendServices({ customerId, selectedServices }) {
+function SendServices({
+  customer_id,
+  selectedServices,
+
+}) {
   const [order_description, setOrderDescription] = useState("");
   const [order_total_price, setOrderTotalPrice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -12,31 +16,35 @@ function SendServices({ customerId, selectedServices }) {
   const [active_order, setActive_order] = useState(1);
   const [order_status, setOrderStatus] = useState(0);
   const [serviceCompleted, setServiceCompleted] = useState(0);
-
-  console.log(customerId);
+  const navigate = useNavigate();
 
   const submitOrder = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-     const orderData = {
-       customerId,
-       order_description: order_description || null,
-       order_total_price: order_total_price
-         ? parseFloat(order_total_price)
-         : null,
-       active_order,
-       order_status,
-       order_services: selectedServices.map((serviceId) => ({
-         service_id: serviceId,
-         service_completed: serviceCompleted,
-       })),
-       employee_id: null, // Set to NULL explicitly if not needed
-       vehicle_id: null,
-       order_hash: null,
-     };
+      // Ensure that undefined values are replaced with null before sending to the backend
+      const orderData = {
+        customer_id: customer_id || null,
+        order_description: order_description || null,
+        order_total_price:
+          order_total_price && !isNaN(order_total_price)
+            ? parseFloat(order_total_price)
+            : null,
+        active_order: active_order || null,
+        order_status: order_status || null,
+        order_services: Array.isArray(selectedServices)
+          ? selectedServices.map((serviceId) => ({
+              service_id: serviceId || null,
+              service_completed: serviceCompleted || null,
+            }))
+          : null,
+        employee_id: null, // Ensure null if not needed
+        vehicle_id: null,
+        order_hash: null,
+      };
 
+      console.log("Sending Order Data:", orderData); // Debugging log
 
       const orderResponse = await orders.sendOrderInfo(orderData);
 

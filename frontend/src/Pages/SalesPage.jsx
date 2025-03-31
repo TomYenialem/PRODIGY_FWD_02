@@ -8,16 +8,16 @@ import SalesCatagory from "../Components/Sales/SalesCatagory";
 import SalesOverView from "../Components/Sales/SalesOverView";
 
 const salesStats = {
-  totalRevenue: "$1,234,567",
+  totalRevenue: "$234,567",
   averageOrderValue: "$78.90",
   conversionRate: "3.45%",
-  salesGrowth: "12.3%",
+  IncomeGrowth: "12.3%",
 };
 
 const SalesPage = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
-      <Header title="Sales Dashboard" />
+      <Header title="Incomes Dashboard" />
 
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
         {/* SALES STATS */}
@@ -34,7 +34,7 @@ const SalesPage = () => {
             color="#6366F1"
           />
           <StatCard
-            name="Avg. Order Value"
+            name="Avg. Income Value"
             icon={ShoppingCart}
             value={salesStats.averageOrderValue}
             color="#10B981"
@@ -46,9 +46,9 @@ const SalesPage = () => {
             color="#F59E0B"
           />
           <StatCard
-            name="Sales Growth"
+            name="Income Growth"
             icon={CreditCard}
-            value={salesStats.salesGrowth}
+            value={salesStats.IncomeGrowth}
             color="#EF4444"
           />
         </motion.div>

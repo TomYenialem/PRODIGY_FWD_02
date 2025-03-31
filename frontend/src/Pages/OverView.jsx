@@ -15,10 +15,9 @@ import SailsChannalChart from "../Components/Charts/SailsChannalChart";
 const Overview = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
-      <Header title="Dashbord" />
+      <Header title="Hospital Dashboard" />
 
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
-    
         <motion.div
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -26,27 +25,27 @@ const Overview = () => {
           transition={{ duration: 0.8 }}
         >
           <StatCard
-            name="Total Sales"
+            name="Total Patients"
             icon={Zap}
-            value="$12,345"
+            value="1845"
             color="#6366F1"
           />
           <StatCard
-            name="New Users"
+            name="New Admissions"
             icon={Users}
             value="1,234"
             color="#8B5CF6"
           />
           <StatCard
-            name="Total Products"
+            name="Available Doctors"
             icon={ShoppingBag}
             value="567"
             color="#EC4899"
           />
           <StatCard
-            name="Conversion Rate"
+            name="Staff Performance"
             icon={BarChart2}
-            value="12.5%"
+            value="92.5%"
             color="#10B981"
           />
         </motion.div>
@@ -54,9 +53,9 @@ const Overview = () => {
         {/* CHARTS */}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <SalesOverView/>
-          <DailySails/>
-          <SailsChannalChart/>
+          <SalesOverView />
+          <DailySails />
+          <SailsChannalChart />
         </div>
       </main>
     </div>

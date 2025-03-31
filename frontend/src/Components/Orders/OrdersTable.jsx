@@ -25,7 +25,7 @@ const OrdersTable = () => {
           setApiError(true);
           setApiErrorMessage(response.error);
         }
-        setOrdersData(response.data);
+        setOrdersData(response.data.slice(0,10));
         console.log(response.data);
       } catch (err) {
         console.log(err);
@@ -36,6 +36,8 @@ const OrdersTable = () => {
 
     fetchOrders();
   }, []);
+
+  console.log(ordersData)
 
   return (
     <>
@@ -113,7 +115,7 @@ const OrdersTable = () => {
                         {order.customer_first_name}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">
-                        ${order.customer_phone_number}
+                        {order.customer_phone_number}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                         <span

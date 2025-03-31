@@ -7,9 +7,8 @@ import UserActivity from "../Components/Patients/UserActivity";
 import Patients  from '../Components/Patients/PatientTable'
 
 const userStats = {
-  totalUsers: 152845,
-  newUsersToday: 243,
-  activeUsers: 98520,
+  totalPatients: 1845,
+  newPatientToday: 43,
   churnRate: "2.4%",
 };
 
@@ -27,23 +26,18 @@ const UsersPage = () => {
           transition={{ duration: 1 }}
         >
           <StatCard
-            name="Total Users"
+            name="Total Patients"
             icon={UsersIcon}
-            value={userStats.totalUsers.toLocaleString()}
+            value={userStats.totalPatients.toLocaleString()}
             color="#6366F1"
           />
           <StatCard
-            name="New Users Today"
+            name="New Patients Today"
             icon={UserPlus}
-            value={userStats.newUsersToday}
+            value={userStats.newPatientToday}
             color="#10B981"
           />
-          <StatCard
-            name="Active Users"
-            icon={UserCheck}
-            value={userStats.activeUsers.toLocaleString()}
-            color="#F59E0B"
-          />
+        
           <StatCard
             name="Churn Rate"
             icon={UserX}

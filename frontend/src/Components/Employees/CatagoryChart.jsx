@@ -9,11 +9,11 @@ import {
 } from "recharts";
 
 const categoryData = [
-  { name: "Electronics", value: 4500 },
-  { name: "Clothing", value: 3200 },
-  { name: "Home & Garden", value: 2800 },
-  { name: "Books", value: 2100 },
-  { name: "Sports & Outdoors", value: 1900 },
+  { name: "Doctors", value: 20 },
+  { name: "Nurses", value: 100 },
+  { name: "Specialists", value: 10 },
+  { name: "Support Staff", value: 60 },
+  { name: "Administrative Staff", value: 100 },
 ];
 
 const COLORS = ["#6366F1", "#8B5CF6", "#EC4899", "#10B981", "#F59E0B"];

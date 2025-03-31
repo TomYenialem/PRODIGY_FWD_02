@@ -9,17 +9,17 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const dailySalesData = [
-  { name: "Mon", sales: 1000 },
-  { name: "Tue", sales: 1200 },
-  { name: "Wed", sales: 900 },
-  { name: "Thu", sales: 1100 },
-  { name: "Fri", sales: 1300 },
-  { name: "Sat", sales: 1600 },
-  { name: "Sun", sales: 1400 },
+const dailyPatientVisits = [
+  { day: "Mon", visits: 50 },
+  { day: "Tue", visits: 65 },
+  { day: "Wed", visits: 40 },
+  { day: "Thu", visits: 55 },
+  { day: "Fri", visits: 70 },
+  { day: "Sat", visits: 85 },
+  { day: "Sun", visits: 60 },
 ];
 
-const  DailySails = () => {
+const DailyPatientVisits = () => {
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
@@ -28,14 +28,14 @@ const  DailySails = () => {
       transition={{ delay: 0.4 }}
     >
       <h2 className="text-xl font-semibold text-gray-100 mb-4">
-        Daily Sales Trend
+        Daily Patient Visits
       </h2>
 
       <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
-          <BarChart data={dailySalesData}>
+          <BarChart data={dailyPatientVisits}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis dataKey="name" stroke="#9CA3AF" />
+            <XAxis dataKey="day" stroke="#9CA3AF" />
             <YAxis stroke="#9CA3AF" />
             <Tooltip
               contentStyle={{
@@ -44,11 +44,12 @@ const  DailySails = () => {
               }}
               itemStyle={{ color: "#E5E7EB" }}
             />
-            <Bar dataKey="sales" fill="#10B981" />
+            <Bar dataKey="visits" fill="#16A34A" />
           </BarChart>
         </ResponsiveContainer>
       </div>
     </motion.div>
   );
 };
-export default DailySails;
+
+export default DailyPatientVisits;

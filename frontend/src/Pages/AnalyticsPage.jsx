@@ -4,7 +4,7 @@ import OverviewCards from '../Components/Analytics/OverviewCards'
 
 import ChannelPerformance from '../Components/analytics/ChannelPerformance'
 
-import ProductPerformance from '../Components/analytics/ProductPerformance'
+// import ProductPerformance from '../Components/analytics/ProductPerformance'
 
 import UserRetention from '../Components/analytics/UserRetention'
 
@@ -26,7 +26,7 @@ const AnalyticsPage = () => {
 
 				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8'>
 					<ChannelPerformance />
-					<ProductPerformance />
+					{/* <ProductPerformance /> */}
 					<UserRetention />
 					<CustomerSegmentation />
 				</div>

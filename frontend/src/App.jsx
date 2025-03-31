@@ -19,6 +19,7 @@ import EditPatient from "./Components/Patients/EditPatient";
 import PlaceOrder from "./Components/Orders/PlaceOrder";
 import CustomerOrder from "./Components/Patients/CustomerOrder";
 import EditOrders from "./Components/Orders/EditOrders";
+import Login from "./Pages/Login";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/new_service" element={<Services />} />
           <Route path="/add_order/:customer_id" element={<PlaceOrder />} />
           <Route path="/customer_order/:order_id" element={<CustomerOrder />} />
+          <Route path="/login" element={<Login/>} />
           <Route
             path="/edit_employee/:employee_id"
             element={<EditEmployees />}
