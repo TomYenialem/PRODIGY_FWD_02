@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customers from "../../Services/AddPatient.service";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../../Context/AuthProvider";
 
 function AddUsers() {
+  const { isAdmin } = useAuth();
   const [formData, setFormData] = useState({
     customer_email: "",
     customer_first_name: "",
@@ -16,8 +18,20 @@ function AddUsers() {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [firstNameRequired, setFirstNameRequired] = useState("");
-  const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
+
+  const resetForm = () => {
+    setFormData({
+      customer_email: "",
+      customer_first_name: "",
+      customer_last_name: "",
+      customer_phone_number: "",
+      active_customer_status: 1,
+    });
+    setEmailError("");
+    setFirstNameRequired("");
+    setServerError("");
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,14 +39,15 @@ function AddUsers() {
       ...formData,
       [name]: value,
     });
+    // Clear errors when user starts typing
+    if (name === "customer_email" && emailError) setEmailError("");
+    if (name === "customer_first_name" && firstNameRequired)
+      setFirstNameRequired("");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const validateForm = () => {
     let valid = true;
 
-    // Use formData properties directly
     if (!formData.customer_first_name) {
       setFirstNameRequired("First name is required");
       valid = false;
@@ -53,7 +68,20 @@ function AddUsers() {
       }
     }
 
-    if (!valid) {
+    return valid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (!isAdmin) {
+      toast.error("You must be an admin to access this page.");
+      setLoading(false);
+      return;
+    }
+
+    if (!validateForm()) {
       setLoading(false);
       return;
     }
@@ -63,21 +91,19 @@ function AddUsers() {
       const data = await response.json();
 
       if (data.error) {
-        return setServerError(data.error);
+        setServerError(data.error);
+        toast.error(data.error);
+      } else {
+        toast.success(data.message || "Patient added successfully");
+        resetForm();
+        navigate("/users");
       }
-      setSuccess(true);
-      setServerError("");
-      toast.success(data.message);
-      navigate("/users");
     } catch (error) {
-      console.log(error);
-      const resMessage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      setServerError(resMessage);
+      console.error("Error adding patient:", error);
+      const errorMsg =
+        error.response?.data?.message || error.message || "An error occurred";
+      setServerError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -90,7 +116,7 @@ function AddUsers() {
           Add New Patient
         </h1>
         {serverError && (
-          <div className="text-red-600 text-start">{serverError}</div>
+          <div className="text-red-600 text-start mb-4">{serverError}</div>
         )}
 
         <form className="space-y-8" onSubmit={handleSubmit}>
@@ -106,12 +132,12 @@ function AddUsers() {
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-400 rounded-md bg-gray-600 text-white shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
+            {firstNameRequired && (
+              <div className="text-red-500 text-sm mt-1">
+                {firstNameRequired}
+              </div>
+            )}
           </div>
-          {firstNameRequired && (
-            <div className="validation-error" role="alert">
-              {firstNameRequired}
-            </div>
-          )}
 
           {/* Last Name Field */}
           <div className="mb-5">
@@ -140,9 +166,7 @@ function AddUsers() {
               className="mt-1 block w-full px-3 py-2 border border-gray-400 rounded-md bg-gray-600 text-white shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             {emailError && (
-              <div className="validation-error" role="alert">
-                {emailError}
-              </div>
+              <div className="text-red-500 text-sm mt-1">{emailError}</div>
             )}
           </div>
 
@@ -160,13 +184,22 @@ function AddUsers() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="px-10 py-2 bg-green-800 text-white rounded-md hover:bg-green-900 transition duration-300 focus:ring focus:ring-green-300"
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              className="px-10 py-2 bg-green-800 text-white rounded-md hover:bg-green-900 transition duration-300 focus:ring focus:ring-green-300"
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </button>
+            <button
+              type="button"
+              onClick={resetForm}
+              className="px-10 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition duration-300"
+            >
+              Reset
+            </button>
+          </div>
         </form>
       </div>
     </div>

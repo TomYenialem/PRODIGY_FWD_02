@@ -82,7 +82,9 @@ const singleCustomersOrder = async (customer_id) => {
       `${api_url}/api/singleorder_per_customer/${customer_id}`,
       options
     );
+    console.log(response)
     return response.json();
+
   } catch (error) {
     console.log(error);
   }

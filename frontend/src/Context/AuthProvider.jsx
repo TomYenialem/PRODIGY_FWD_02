@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
     services.getAllServcies().then((res) =>
       res.json().then((data) => {
-        setServiceDatas(data.data);
+        setServiceDatas(data.data.slice(0,8));
       })
     );
   };

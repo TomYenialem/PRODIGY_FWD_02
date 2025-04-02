@@ -3,10 +3,12 @@ import { Edit, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import services from "../../Services/Services.service";
-import { useAuth } from "../../Context/AuthProvider";
+
 import { motion } from "framer-motion";
+import {useAuth} from '../../Context/AuthProvider'
 
 function Services() {
+  const { isAdmin } = useAuth();
   const [service_name, setService_name] = useState("");
   const [service_description, setService_description] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,6 +26,12 @@ function Services() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+      if (!isAdmin) {
+            toast.error("You must be an admin to access this page.");
+            setLoading(false);
+            return;
+          }
     if (!service_name || !service_description) {
       toast.error("Please fill all fields");
       setLoading(false);

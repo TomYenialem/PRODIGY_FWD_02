@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import customers from "../../Services/AddPatient.service";
+import { useAuth } from "../../Context/AuthProvider";
 
 function EditPatient() {
+  const { isAdmin } = useAuth();
   const [formData, setFormData] = useState({
     customer_first_name: "",
     customer_last_name: "",
@@ -52,6 +54,11 @@ function EditPatient() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+      if (!isAdmin) {
+        toast.error("You must be an admin to access this page.");
+        setLoading(false);
+        return;
+      }
 
     try {
       const response = await customers.editCustomerInfo(

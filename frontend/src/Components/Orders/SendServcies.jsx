@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import orders from "../../Services/orders.service";
+import { useAuth } from "../../Context/AuthProvider";
 
 function SendServices({
   customer_id,
@@ -16,12 +17,18 @@ function SendServices({
   const [active_order, setActive_order] = useState(1);
   const [order_status, setOrderStatus] = useState(0);
   const [serviceCompleted, setServiceCompleted] = useState(0);
+  const { isAdmin } = useAuth(); 
   const navigate = useNavigate();
 
   const submitOrder = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
+        if (!isAdmin) {
+          toast.error("You must be an admin to access this page.");
+          setIsLoading(false);
+          return;
+        }
     try {
       // Ensure that undefined values are replaced with null before sending to the backend
       const orderData = {

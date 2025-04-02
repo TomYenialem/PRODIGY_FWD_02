@@ -65,23 +65,38 @@ function LoginForm() {
       )
       .finally(() => setLoading(false));
   };
+  
+function guestLogin() {
+  setEmail("helu@gmail.com");
+  setPassword("12345678");
+
+  const userConfirmed = window.confirm(
+    "YOU HAVE LIMITED ACCESS TO THE ADMIN PANEL. Do you want to continue?"
+  );
+
+  if (userConfirmed) {
+    setTimeout(() => {
+      handleSubmit(new Event("submit")); // Manually trigger the login
+    }, 100); // Slight delay to allow state update
+  }
+}
+
 
   return (
-      <motion.div
+    <motion.div
       className=" h-[300px] w-[500px] mx-auto gap-9 p-4 px-3 mt-9"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-
       <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 w-full mt-24">
         <h1 className="text-green-600 text-xl font-bold mb-4">
-         Login to Your Account
+          Login to Your Account
         </h1>
         {serverError && (
           <p className="text-red-500 text-sm mt-1 mb-3 ">{serverError}</p>
         )}
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
               type="email"
@@ -89,7 +104,7 @@ function LoginForm() {
               value={employee_email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="Email"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="w-full text-black p-3 border border-green-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
             />
             {emailError && (
               <p className="text-red-500 text-sm mt-1">{emailError}</p>
@@ -103,7 +118,7 @@ function LoginForm() {
               value={employee_password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Password"
-              className="w-full p-3 border border-gray-00 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="w-full p-3 border text-black  border-gray-00 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
             />
             {passwordError && (
               <p className="text-red-500 text-sm mt-1">{passwordError}</p>
@@ -123,11 +138,12 @@ function LoginForm() {
               "Login"
             )}
           </button>
+          <button className="px-3 py-1 bg-red-600 text-white">
+            <span onClick={guestLogin}>Guest Login</span>
+          </button>
         </form>
       </div>
-
     </motion.div>
-
   );
 }
 

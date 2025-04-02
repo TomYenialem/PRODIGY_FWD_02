@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import employeeService from "../../Services/employee.service";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../../Context/AuthProvider";
 
 function Employees() {
+  const {isAdmin}=useAuth()
   const [formData, setFormData] = useState({
     employee_first_name: "",
     employee_last_name: "",
@@ -54,6 +56,11 @@ function Employees() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+      if (!isAdmin) {
+            toast.error("You must be an admin to access this page.");
+            setLoading(false);
+            return;
+          }
 
     try {
       const response = await employeeService.editEmployee(

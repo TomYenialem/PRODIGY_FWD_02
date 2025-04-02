@@ -11,18 +11,17 @@ const Header = ({ title }) => {
         <h3 className="sm-text-center text-green-500 font-bold">
           {isLogged ? (
             <>
-              Hello {employee.employee_first_name} <br/> Status: 
+              Hello {employee.employee_first_name} <br /> Status:
               {employee.employee_role === 1
-                ? "Employee"
+                ? "Doctor"
                 : employee.employee_role === 2
-                ? "Manager"
-                : "Admin"}
-              
+                ? "Nurse"
+                : employee.employee_role === 3
+                ? "Admin"
+                : "Guest"}
             </>
           ) : (
-            <Link to ="/login">
-            Login
-            </Link>
+            <Link to="/login">Login</Link>
           )}
         </h3>
       </div>

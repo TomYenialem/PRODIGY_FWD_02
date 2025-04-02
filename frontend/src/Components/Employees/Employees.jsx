@@ -3,9 +3,12 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import employeeService from "../../Services/employee.service";
+import { useAuth } from "../../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 function Employees() {
   const navigate = useNavigate();
+  const {isAdmin}=useAuth()
 
   // State management
   const [formData, setFormData] = useState({
@@ -35,7 +38,12 @@ function Employees() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
-  setServerError(""); // Clear previous errors
+  setServerError(""); 
+  if(!isAdmin) {
+    toast.error("You are not authorized to add an employee.");
+    setLoading(false);
+    return;
+  }
 
   try {
     if (formData.employee_password.length < 8) {
@@ -90,7 +98,9 @@ const handleSubmit = async (e) => {
         </h1>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
-          {serverError && <p className="text-red-500 text-center">{serverError}</p>}
+          {serverError && (
+            <p className="text-red-500 text-center">{serverError}</p>
+          )}
 
           <input
             type="text"
@@ -133,7 +143,7 @@ const handleSubmit = async (e) => {
             className="block w-full px-3 py-2 border border-gray-400 bg-gray-600 text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           >
             <option value={1}>Doctor</option>
-            <option value={2}>Patient</option>
+            <option value={2}>Nurse</option>
             <option value={3}>Admin</option>
           </select>
 
@@ -168,7 +178,6 @@ const handleSubmit = async (e) => {
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
-  
       </div>
     </motion.div>
   );

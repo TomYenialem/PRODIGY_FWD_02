@@ -60,8 +60,8 @@ function PlaceOrder() {
             {singleCustomer.customer_email}
           </p>
           <p className="">
-            <span className=" text-green-400">Phone:</span> $
-            {singleCustomer.order_total_price}
+            <span className=" text-green-400">Phone:</span> 
+            {singleCustomer.customer_phone_number}
           </p>
           <div className="flex items-center space-x-2">
             <span className=" text-green-400">Status:</span>

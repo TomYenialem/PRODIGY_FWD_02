@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 import employeeService from "../../Services/employee.service";
 import { PulseLoader } from "react-spinners";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../../Context/AuthProvider";
 
 const EmployeeTable = () => {
+  const { isAdmin } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredemployees, setFilteredemployees] = useState([]);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
   const [employeeToDelete, setEmployeeToDelete] = useState("");
   const [showModal, setShowModal] = useState(false);
-
   const fetchEmployesData = async () => {
+  
     setLoading(true);
     try {
       const data = await employeeService.getAllemployess();
@@ -33,7 +35,7 @@ const EmployeeTable = () => {
     fetchEmployesData();
   }, []);
 
-  const searchItems = filteredemployees.filter(
+  const searchItems = filteredemployees?.filter(
     (item) =>
       item.employee_first_name
         .toLowerCase()
@@ -51,10 +53,10 @@ const EmployeeTable = () => {
   };
 
   const deleteEmployee = () => {
-    // if (!isAdmin) {
-    //   toast.error("You are not authorized to perform this action.");
-    //   return;
-    // }
+    if (!isAdmin) {
+      toast.error("You are not authorized to perform this action.");
+      return;
+    }
     if (employeeToDelete) {
       const employee = employeeService.deleteEmploye(employeeToDelete);
       employee.then((data) => {
@@ -142,7 +144,7 @@ const EmployeeTable = () => {
                 </thead>
 
                 <tbody className="divide-y divide-gray-700">
-                  {searchItems.map((employee) => (
+                  {searchItems?.map((employee) => (
                     <motion.tr
                       key={employee.id}
                       initial={{ opacity: 0 }}

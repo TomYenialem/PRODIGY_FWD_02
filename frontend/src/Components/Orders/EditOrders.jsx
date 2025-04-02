@@ -3,21 +3,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { PulseLoader } from "react-spinners";
 import orders from "../../Services/orders.service";
+import { useAuth } from "../../Context/AuthProvider";
 
 function EditOrders() {
   const [loading, setLoading] = useState(false);
   const [order_status, setOrderStatus] = useState(0);
   const [serverError, setServerError] = useState("");
-//   const { isAdmin } = useAuth();
+  const { isAdmin } = useAuth();
   const navigate = useNavigate();
   const { order_id } = useParams();
 
   const editOrdersInfo = async (e) => {
     e.preventDefault();
-    // if (!isAdmin) {
-    //   toast.error("You must be an admin to access this page");
-    //   return;
-    // }
+    if (!isAdmin) {
+      toast.error("You must be an admin to access this page");
+      setLoading(false);
+      return;
+    }
 
     setLoading(true);
     try {

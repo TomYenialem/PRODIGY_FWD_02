@@ -6,19 +6,17 @@ import { motion } from "framer-motion";
 function CustomerOrder() {
   const [singleOrderData, setSingleOrderData] = useState(null);
   const { order_id } = useParams();
+// Check the order_id in console
 
   const fetchSingleOrderList = async () => {
     try {
       const singleOrder = await orders.singleOrder(order_id);
+        console.log(singleOrder); // Check the data structure in console
 
-      if (singleOrder.error) {
-        console.log(singleOrder.error);
-        return;
-      }
-
+  
       // Set the order data (which is an object, not an array)
-      setSingleOrderData(singleOrder?.data[0]);
-      console.log(singleOrder.data[0]); // Check the data structure in console
+      setSingleOrderData(singleOrder?.data);
+      console.log(singleOrder); // Check the data structure in console
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +29,7 @@ function CustomerOrder() {
   return (
     <>
       <motion.div
-        className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
+        className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl  border border-gray-700"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
@@ -51,7 +49,7 @@ function CustomerOrder() {
           <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white">
             <div className="w-full max-w-5xl space-y-6 p-4">
               {/* Customer Info & Status */}
-              <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-red-500">
+              <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-green-600">
                 <div className="flex justify-between items-center">
                   <div>
                     <h2 className="text-2xl font-semibold mb-2">
@@ -83,7 +81,7 @@ function CustomerOrder() {
 
               {/* Customer Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-red-500">
+                <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-green-500">
                   <p className="text-sm text-gray-400">CUSTOMER</p>
                   <h2 className="text-xl font-bold">
                     {singleOrderData?.customer_first_name}{" "}
@@ -106,8 +104,8 @@ function CustomerOrder() {
               </div>
 
               {/* Request Service Box */}
-              <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-red-500">
-                <p className="uppercase text-gray-400">
+              <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-b-4 border-green-500">
+                <p className="uppercase text-gray-400 ">
                   {singleOrderData?.vehicle_type}
                 </p>
                 <h3 className="text-xl font-bold mt-2">Request Service</h3>
