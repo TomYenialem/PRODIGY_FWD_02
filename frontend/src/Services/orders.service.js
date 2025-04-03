@@ -8,7 +8,7 @@ const sendOrderInfo = async (orderData) => {
       },
       body: JSON.stringify(orderData),
     });
-   
+
     return response.json();
   } catch (error) {
     console.error("Error sending order info:", error);
@@ -27,7 +27,7 @@ const getAllOrders = async () => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return response.json()
+    return response.json();
   } catch (error) {
     console.log(error);
   }
@@ -82,9 +82,8 @@ const singleCustomersOrder = async (customer_id) => {
       `${api_url}/api/singleorder_per_customer/${customer_id}`,
       options
     );
-    console.log(response)
+    console.log(response);
     return response.json();
-
   } catch (error) {
     console.log(error);
   }

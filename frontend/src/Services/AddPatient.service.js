@@ -11,7 +11,7 @@ const addCustomers = async (formData) => {
     const response = await fetch(`${api_url}/api/customers`, options);
     return response;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 const getCustomer = async () => {
@@ -36,7 +36,7 @@ const singleCustomer = async (id) => {
     const errorData = await response.json();
     throw new Error(errorData.error || "Failed to update customer");
   }
-  return response.json()
+  return response.json();
 };
 const editCustomerInfo = async (id, data) => {
   try {
