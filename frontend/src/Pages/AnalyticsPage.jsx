@@ -1,6 +1,6 @@
 import Header from "../Components/Header/Header";
 import RevenueChart from '../Components/analytics/RevenueChart'
-import OverviewCards from '../Components/Analytics/OverviewCards'
+import OverviewCards from '../Components/analytics/OverviewCards'
 
 import ChannelPerformance from '../Components/analytics/ChannelPerformance'
 
