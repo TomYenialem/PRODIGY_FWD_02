@@ -1,4 +1,9 @@
 # Hospital Management System
+
+## Live Demo
+
+You can view the live demo of the project here: [Prodigy FWD Demo](https://prodigy-fwd-02-5.onrender.com)
+
 <img width="940" alt="Screenshot 2025-04-01 212754" src="https://github.com/user-attachments/assets/c2a5c2c2-5a0a-4ca0-86fc-b0413335eab5" />
 
 A comprehensive solution for managing hospital operations including patient records, staff management, appointments, and administrative functions.
