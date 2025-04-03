@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(cors()); // ✅ Corrected: Apply CORS middleware properly
 app.use(route);
 
-
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = express.Router();
-const customer = require("../Controllers/patinet.controller")
+const customer = require("../Controllers/patinet.controller");
 
 routes.post("/api/customers", customer.addCustomer);
 

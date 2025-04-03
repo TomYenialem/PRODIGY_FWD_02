@@ -38,12 +38,24 @@ async function query(sql, params) {
     const [rows] = await connection.execute(sql, params);
     return rows;
   } catch (error) {
-    console.error("❌ Database Query Error:", error.message);
+    console.log("❌ Database Query Error:", error.message);
     throw error; // Ensure errors propagate to the caller
   } finally {
     if (connection) connection.release(); // Always release the connection
   }
 }
+async function testConnection() {
+  try {
+    // Test the connection with a simple query
+    const result = await query("SELECT 1 + 1 AS solution");
+    console.log("✅ Database connection is working:", result);
+  } catch (error) {
+    console.log("❌ Database connection failed:", error.message);
+  }
+}
+
+// Call the test function to verify the connection
+testConnection();
 
 // Export the query function for database operations
 module.exports = { query };
