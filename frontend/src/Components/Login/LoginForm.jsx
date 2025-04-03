@@ -67,7 +67,7 @@ function LoginForm() {
   };
   
 function guestLogin() {
-  setEmail("helu@gmail.com");
+  setEmail("guest@gmail.com");
   setPassword("12345678");
 
   const userConfirmed = window.confirm(
@@ -125,22 +125,29 @@ function guestLogin() {
             )}
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-all"
-          >
-            {loading ? (
-              <span className="flex justify-center items-center">
-                <PulseLoader size={10} color={"#fff"} />
-              </span>
-            ) : (
-              "Login"
-            )}
-          </button>
-          <button className="px-3 py-1 bg-red-600 text-white">
-            <span onClick={guestLogin}>Guest Login</span>
-          </button>
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex-1 bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-all text-center"
+            >
+              {loading ? (
+                <span className="flex justify-center items-center">
+                  <PulseLoader size={10} color={"#fff"} />
+                </span>
+              ) : (
+                "Login"
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={guestLogin}
+              className="flex-1 bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-all text-center"
+            >
+              Guest Login
+            </button>
+          </div>
         </form>
       </div>
     </motion.div>
